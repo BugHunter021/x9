@@ -16,6 +16,9 @@ import (
     sliceUtil "github.com/projectdiscovery/utils/slice"
 )
 
+// نسخه برنامه
+const Version = "v1.0.1 Best Speed"
+
 type Options struct {
     list               string
     parameters         string
@@ -25,7 +28,8 @@ type Options struct {
     valueStrategy      string
     output             string
     doubleEncode       bool
-    silent             bool // پرچم جدید برای غیرفعال کردن گزارش
+    silent             bool // پرچم برای غیرفعال کردن گزارش
+    ver                bool // پرچم جدید برای نمایش نسخه
 }
 
 var (
@@ -137,10 +141,17 @@ func ParseOptions() *Options {
 
     flags.StringVarP(&options.output, "output", "o", "", "File to write output results")
     flags.BoolVarP(&options.doubleEncode, "double-encode", "de", false, "Double encode the values")
-    flags.BoolVarP(&options.silent, "silent", "s", false, "Suppress processing report output") // پرچم جدید silent
+    flags.BoolVarP(&options.silent, "silent", "s", false, "Suppress processing report output")
+    flags.BoolVarP(&options.ver, "version", "ver", false, "Show program version and exit") // پرچم جدید version
 
     if err := flags.Parse(); err != nil {
         gologger.Fatal().Msg(err.Error())
+    }
+
+    // اگه پرچم version فعال باشه، نسخه چاپ می‌شه و برنامه خارج می‌شه
+    if options.ver {
+        fmt.Printf("x9 version %s\n", Version)
+        os.Exit(0)
     }
 
     if err := options.validateOptions(); err != nil {
