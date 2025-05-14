@@ -201,7 +201,6 @@ func combineStrat(urls []string) []string {
 		// parse each url
 		parsedUrl, err := url.Parse(singleUrl)
 		if err != nil {
-			gologger.Warning().Msgf("Skipping invalid URL %q: %v", singleUrl, err)
 			continue
 		}
 		queryParams := parsedUrl.Query()
@@ -251,7 +250,6 @@ func ignoreStrat(urls []string, params []string) []string {
 		// parse each url
 		parsedUrl, err := url.Parse(singleUrl)
 		if err != nil {
-			gologger.Warning().Msgf("Skipping invalid URL %q: %v", singleUrl, err)
 			continue
 		}
 		queryParams := parsedUrl.Query()
@@ -307,7 +305,6 @@ func normalStrat(urls []string, params []string) []string {
 		// parse each url
 		parsedUrl, err := url.Parse(singleUrl)
 		if err != nil {
-			gologger.Warning().Msgf("Skipping invalid URL %q: %v", singleUrl, err)
 			continue
 		}
 		queryParams := parsedUrl.Query()
@@ -359,7 +356,6 @@ func newParamsOnlyStrat(urls []string, params []string) []string {
 		// parse each url
 		parsedUrl, err := url.Parse(singleUrl)
 		if err != nil {
-			gologger.Warning().Msgf("Skipping invalid URL %q: %v", singleUrl, err)
 			continue
 		}
 
@@ -369,7 +365,6 @@ func newParamsOnlyStrat(urls []string, params []string) []string {
 		// parse the base url
 		parsedUrl, err = url.Parse(baseUrl)
 		if err != nil {
-			gologger.Warning().Msgf("Skipping invalid URL %q: %v", singleUrl, err)
 			continue
 		}
 		for _, singeValue := range options.values {
