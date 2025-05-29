@@ -1,12 +1,12 @@
 # Installation
 ```bash
-go install github.com/0xgwyn/x9@latest
+go install github.com/BugHunter021/x9@latest
 ```
 or
 ```bash
 git clone https://github.com/0xGwyn/x9.git 
 cd x9
-go build -o $GOPATH/bin/x8 main.go
+go build -o $GOPATH/bin/x9 main.go
 ```
 # Usage 
 ```bash
